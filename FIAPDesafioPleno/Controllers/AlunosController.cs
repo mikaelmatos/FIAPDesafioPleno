@@ -24,6 +24,7 @@ namespace FIAPDesafioPleno.Controllers
             _auth = auth;
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AlunoCreateDto dto)
         {
@@ -82,6 +83,7 @@ namespace FIAPDesafioPleno.Controllers
             return Ok(new { total, page, pageSize, items });
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] AlunoCreateDto dto)
         {
@@ -98,6 +100,8 @@ namespace FIAPDesafioPleno.Controllers
             aluno.DataNascimento = dto.DataNascimento;
             aluno.CPF = cpf;
             aluno.Email = dto.Email;
+            aluno.IsAdmin = dto.IsAdmin;
+
             if (!string.IsNullOrWhiteSpace(dto.Password))
             {
                 if (!IsStrongPassword(dto.Password)) return BadRequest("Senha fraca.");
@@ -108,9 +112,15 @@ namespace FIAPDesafioPleno.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
+            if (id == 1)
+            {
+                return BadRequest("Não pode ser excluído ");
+            }
+
             var aluno = await _ctx.Alunos.FindAsync(id);
             if (aluno == null) return NotFound();
             _ctx.Alunos.Remove(aluno);

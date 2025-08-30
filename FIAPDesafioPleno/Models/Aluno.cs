@@ -23,6 +23,9 @@ namespace FIAPDesafioPleno.Models
         [Required]
         public string PasswordHash { get; set; }
 
+        [Required]
+        public bool IsAdmin { get; set; }
+
         public ICollection<Matricula> Matriculas { get; set; } = new List<Matricula>();
     }
 }

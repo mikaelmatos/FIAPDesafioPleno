@@ -42,6 +42,9 @@ namespace FIAPDesafioPleno.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

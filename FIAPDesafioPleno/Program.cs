@@ -8,16 +8,13 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Controllers
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Swagger + JWT
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "FIAPDesafioPleno API", Version = "v1" });
 
-    // Botão Authorize
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -44,14 +41,11 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// DB Context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Serviços customizados
 builder.Services.AddScoped<IAuthService, AuthService>();
 
-// JWT
 var jwt = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwt["Key"]);
 
@@ -80,12 +74,11 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// Swagger SEMPRE ativo
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "FIAPDesafioPleno API v1");
-    c.RoutePrefix = "swagger"; // acessa em /swagger
+    c.RoutePrefix = "swagger";
 });
 
 app.UseHttpsRedirection();
@@ -109,7 +102,8 @@ app.MapControllers();
 //            DataNascimento = new DateTime(1990, 1, 1),
 //            CPF = "12345678901",
 //            Email = "admin@fiap.com",
-//            PasswordHash = auth.HashPassword("Admin@123")
+//            PasswordHash = auth.HashPassword("Admin@123"),
+//            IsAdmin = true
 //        };
 //        ctx.Alunos.Add(admin);
 //        ctx.SaveChanges();

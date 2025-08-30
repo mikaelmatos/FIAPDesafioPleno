@@ -14,12 +14,12 @@ Abra o terminal no diretório do projeto e rode:
 
 ### 2 - Criar Migration inicial
 
-dotnet ef migrations add InitialCreate
+* dotnet ef migrations add InitialCreate
 
 
 ### 3 - Aplicar Migration
 
-dotnet ef database update
+* dotnet ef database update
 
 
 Isso vai gerar as tabelas Alunos, Turmas, Matriculas no banco.

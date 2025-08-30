@@ -37,14 +37,22 @@ namespace FIAPDesafioPleno.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, aluno.Id.ToString()),
                 new Claim(ClaimTypes.Name, aluno.Email ?? ""),
-                new Claim(ClaimTypes.Role, "Administrator") // Somente admin que acessa
+                new Claim(ClaimTypes.Role, aluno.IsAdmin ? "Administrator" : "User")
             };
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
             var creds = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(issuer, audience, claims, expires: DateTime.UtcNow.AddMinutes(expiresMinutes), signingCredentials: creds);
+            var token = new JwtSecurityToken(
+                issuer,
+                audience,
+                claims,
+                expires: DateTime.UtcNow.AddMinutes(expiresMinutes),
+                signingCredentials: creds
+            );
+
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
     }
 }

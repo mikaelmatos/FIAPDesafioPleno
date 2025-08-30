@@ -15,6 +15,7 @@ namespace FIAPDesafioPleno.Controllers
         private readonly ApplicationDbContext _ctx;
         public MatriculasController(ApplicationDbContext ctx) => _ctx = ctx;
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<ActionResult<Matricula>> CreateMatricula([FromBody] MatriculaCreateDto dto)
         {
@@ -37,6 +38,7 @@ namespace FIAPDesafioPleno.Controllers
             return CreatedAtAction(nameof(GetMatricula), new { id = matricula.Id }, matricula);
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<object>>> GetAll()
         {
@@ -55,6 +57,7 @@ namespace FIAPDesafioPleno.Controllers
             return Ok(matriculas);
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpGet("{id:int}")]
         public async Task<ActionResult<object>> GetMatricula(int id)
         {
@@ -75,6 +78,7 @@ namespace FIAPDesafioPleno.Controllers
             });
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpGet("turma/{turmaId:int}")]
         public async Task<IActionResult> GetByTurma(int turmaId)
         {
@@ -97,6 +101,7 @@ namespace FIAPDesafioPleno.Controllers
             return Ok(new { turmaId, turma.Nome, alunos });
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] MatriculaCreateDto dto)
         {
@@ -118,6 +123,7 @@ namespace FIAPDesafioPleno.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

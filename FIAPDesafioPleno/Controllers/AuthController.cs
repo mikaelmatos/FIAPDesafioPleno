@@ -2,6 +2,7 @@
 using FIAPDesafioPleno.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace FIAPDesafioPleno.Controllers
@@ -23,6 +24,7 @@ namespace FIAPDesafioPleno.Controllers
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
             var aluno = await _ctx.Alunos.SingleOrDefaultAsync(a => a.Email == dto.Email);
+
             if (aluno == null) return Unauthorized("Credenciais inválidas.");
 
             if (!_auth.VerifyPassword(aluno.PasswordHash, dto.Password)) return Unauthorized("Credenciais inválidas.");

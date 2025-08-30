@@ -19,5 +19,7 @@ namespace FIAPDesafioPleno.DTOs
 
         [Required, MinLength(8)]
         public string Password { get; set; }
+        [Required]
+        public bool IsAdmin { get; set; }
     }
 }

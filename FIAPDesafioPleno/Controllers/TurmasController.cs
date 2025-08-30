@@ -18,6 +18,7 @@ namespace FIAPDesafioPleno.Controllers
         private readonly ApplicationDbContext _ctx;
         public TurmasController(ApplicationDbContext ctx) => _ctx = ctx;
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<ActionResult<Turma>> CreateTurma([FromBody] TurmaCreateDto dto)
         {
@@ -35,7 +36,6 @@ namespace FIAPDesafioPleno.Controllers
 
             return CreatedAtAction(nameof(GetById), new { id = turma.Id }, turma);
         }
-
 
         [HttpGet]
         public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
@@ -69,6 +69,7 @@ namespace FIAPDesafioPleno.Controllers
             });
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] TurmaUpdateDto dto)
         {
