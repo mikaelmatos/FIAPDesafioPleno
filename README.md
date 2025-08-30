@@ -6,10 +6,10 @@
 
 Abra o terminal no diretório do projeto e rode:
 
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-dotnet add package Swashbuckle.AspNetCore
+* dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+* dotnet add package Microsoft.EntityFrameworkCore.Design
+* dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+* dotnet add package Swashbuckle.AspNetCore
 
 
 ### 2 - Criar Migration inicial
