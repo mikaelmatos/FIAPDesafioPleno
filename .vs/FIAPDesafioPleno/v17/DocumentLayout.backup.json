@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{28595509-F51F-4A3F-9652-DD4A56D152FF}|FIAPDesafioPleno.UnitTests\\FIAPDesafioPleno.UnitTests.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.unittests\\controllers\\matriculascontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28595509-F51F-4A3F-9652-DD4A56D152FF}|FIAPDesafioPleno.UnitTests\\FIAPDesafioPleno.UnitTests.csproj|solutionrelative:fiapdesafiopleno.unittests\\controllers\\matriculascontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\controllers\\matriculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\controllers\\matriculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28595509-F51F-4A3F-9652-DD4A56D152FF}|FIAPDesafioPleno.UnitTests\\FIAPDesafioPleno.UnitTests.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.unittests\\controllers\\turmascontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28595509-F51F-4A3F-9652-DD4A56D152FF}|FIAPDesafioPleno.UnitTests\\FIAPDesafioPleno.UnitTests.csproj|solutionrelative:fiapdesafiopleno.unittests\\controllers\\turmascontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\controllers\\turmascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\controllers\\turmascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\dtos\\alunocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\dtos\\alunocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28595509-F51F-4A3F-9652-DD4A56D152FF}|FIAPDesafioPleno.UnitTests\\FIAPDesafioPleno.UnitTests.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.unittests\\controllers\\alunoscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28595509-F51F-4A3F-9652-DD4A56D152FF}|FIAPDesafioPleno.UnitTests\\FIAPDesafioPleno.UnitTests.csproj|solutionrelative:fiapdesafiopleno.unittests\\controllers\\alunoscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\controllers\\alunoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\controllers\\alunoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\fiapdesafiopleno.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\fiapdesafiopleno.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{28595509-F51F-4A3F-9652-DD4A56D152FF}|FIAPDesafioPleno.UnitTests\\FIAPDesafioPleno.UnitTests.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.unittests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28595509-F51F-4A3F-9652-DD4A56D152FF}|FIAPDesafioPleno.UnitTests\\FIAPDesafioPleno.UnitTests.csproj|solutionrelative:fiapdesafiopleno.unittests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,51 +47,93 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MatriculasControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.UnitTests\\Controllers\\MatriculasControllerTests.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno.UnitTests\\Controllers\\MatriculasControllerTests.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.UnitTests\\Controllers\\MatriculasControllerTests.cs",
+              "RelativeToolTip": "FIAPDesafioPleno.UnitTests\\Controllers\\MatriculasControllerTests.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAswI8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T22:31:28.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TurmasControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.UnitTests\\Controllers\\TurmasControllerTests.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno.UnitTests\\Controllers\\TurmasControllerTests.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.UnitTests\\Controllers\\TurmasControllerTests.cs",
+              "RelativeToolTip": "FIAPDesafioPleno.UnitTests\\Controllers\\TurmasControllerTests.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAewDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T22:29:31.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "TurmasController.cs",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\TurmasController.cs",
               "RelativeDocumentMoniker": "FIAPDesafioPleno\\Controllers\\TurmasController.cs",
               "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\TurmasController.cs",
               "RelativeToolTip": "FIAPDesafioPleno\\Controllers\\TurmasController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB0AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAuwGUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-30T21:35:25.439Z",
+              "WhenOpened": "2025-08-30T22:28:32.709Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AlunoCreateDto.cs",
-              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\DTOs\\AlunoCreateDto.cs",
-              "RelativeDocumentMoniker": "FIAPDesafioPleno\\DTOs\\AlunoCreateDto.cs",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\DTOs\\AlunoCreateDto.cs",
-              "RelativeToolTip": "FIAPDesafioPleno\\DTOs\\AlunoCreateDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "MatriculasController.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\MatriculasController.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno\\Controllers\\MatriculasController.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\MatriculasController.cs",
+              "RelativeToolTip": "FIAPDesafioPleno\\Controllers\\MatriculasController.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAuwIwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-30T21:35:18.989Z"
+              "WhenOpened": "2025-08-30T22:28:31.125Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Program.cs",
-              "RelativeDocumentMoniker": "FIAPDesafioPleno\\Program.cs",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Program.cs",
-              "RelativeToolTip": "FIAPDesafioPleno\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "AlunosController.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\AlunosController.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno\\Controllers\\AlunosController.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\AlunosController.cs",
+              "RelativeToolTip": "FIAPDesafioPleno\\Controllers\\AlunosController.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAAAHwAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-30T21:34:21.499Z"
+              "WhenOpened": "2025-08-30T22:22:06.927Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FIAPDesafioPleno.csproj",
-              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\FIAPDesafioPleno.csproj",
-              "RelativeDocumentMoniker": "FIAPDesafioPleno\\FIAPDesafioPleno.csproj",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\FIAPDesafioPleno.csproj",
-              "RelativeToolTip": "FIAPDesafioPleno\\FIAPDesafioPleno.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-30T21:29:38.511Z"
+              "DocumentIndex": 6,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.UnitTests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno.UnitTests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.UnitTests\\UnitTest1.cs",
+              "RelativeToolTip": "FIAPDesafioPleno.UnitTests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T22:15:44.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AlunosControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.UnitTests\\Controllers\\AlunosControllerTests.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno.UnitTests\\Controllers\\AlunosControllerTests.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.UnitTests\\Controllers\\AlunosControllerTests.cs",
+              "RelativeToolTip": "FIAPDesafioPleno.UnitTests\\Controllers\\AlunosControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T22:14:16.23Z",
+              "EditorCaption": ""
             }
           ]
         }

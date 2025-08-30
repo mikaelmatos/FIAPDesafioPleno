@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FIAPDesafioPleno")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad855522dc9c1dc932658d3c42d272a9b70f74b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d9f1a372d5d813b3e887b4adbc8775601dc5d1c")]
 [assembly: System.Reflection.AssemblyProductAttribute("FIAPDesafioPleno")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FIAPDesafioPleno")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
