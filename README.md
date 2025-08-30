@@ -1,8 +1,8 @@
-#CRIAÇÃO DO BANCO
+## CRIAÇÃO DO BANCO
 
 
 
-## 1 - Adicionar pacotes necessários
+### 1 - Adicionar pacotes necessários
 
 Abra o terminal no diretório do projeto e rode:
 
@@ -12,12 +12,12 @@ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 dotnet add package Swashbuckle.AspNetCore
 
 
-## 2 - Criar Migration inicial
+### 2 - Criar Migration inicial
 
 dotnet ef migrations add InitialCreate
 
 
-## 3 - Aplicar Migration
+### 3 - Aplicar Migration
 
 dotnet ef database update
 
@@ -26,7 +26,7 @@ Isso vai gerar as tabelas Alunos, Turmas, Matriculas no banco.
 
 
 
-CRIAÇÃO DO USUARIO ADMIN
+## CRIAÇÃO DO USUARIO ADMIN
 
 
 
