@@ -95,6 +95,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FIAPDesafioPleno.Controllers.AlunosController",
+    "Method": "GetUserInfo",
+    "RelativePath": "api/Alunos/GetUserInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FIAPDesafioPleno.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",

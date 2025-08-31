@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace FIAPDesafioPleno.Controllers
@@ -126,6 +127,18 @@ namespace FIAPDesafioPleno.Controllers
             _ctx.Alunos.Remove(aluno);
             await _ctx.SaveChangesAsync();
             return NoContent();
+        }
+
+        [Authorize]
+        [HttpGet("GetUserInfo")]
+        //[ApiExplorerSettings(IgnoreApi = true)]
+        public IActionResult GetUserInfo()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            var email = User.Identity?.Name;
+
+            return Ok(new { userId, role, email });
         }
 
         private bool IsStrongPassword(string password)
