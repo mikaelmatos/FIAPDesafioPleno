@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\views\\matriculas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\views\\matriculas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\controllers\\matriculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\controllers\\matriculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\views\\matriculas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\views\\matriculas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,26 +26,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml",
               "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml*",
-              "RelativeToolTip": "FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml*",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAlwGYAAAA1AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml",
+              "RelativeToolTip": "FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAlwGEAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-31T20:04:26.45Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MatriculasController.cs",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\MatriculasController.cs",
               "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Controllers\\MatriculasController.cs",
               "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\MatriculasController.cs",
               "RelativeToolTip": "FIAPDesafioPleno.MVC\\Controllers\\MatriculasController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wCEAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAIwHQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-31T19:45:21.867Z",
               "EditorCaption": ""

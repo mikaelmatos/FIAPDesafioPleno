@@ -91,12 +91,17 @@ namespace FIAPDesafioPleno.MVC.Controllers
 
         // Criar matrícula
         [HttpPost]
-        public async Task<IActionResult> Create(MatriculaViewModel matricula)
+        public async Task<IActionResult> Create(int AlunoId, int TurmaId)
         {
             using var client = new HttpClient();
             var token = GetAccessToken();
             if (!string.IsNullOrEmpty(token))
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            Matricula matricula = new Matricula();
+            matricula.AlunoId = AlunoId;
+            matricula.TurmaId = TurmaId;
+            matricula.DataMatricula = DateTime.Now;
 
             var response = await client.PostAsJsonAsync($"{_apiBaseUrl}/api/matriculas", matricula);
             if (response.IsSuccessStatusCode)
@@ -108,14 +113,19 @@ namespace FIAPDesafioPleno.MVC.Controllers
 
         // Editar matrícula
         [HttpPost]
-        public async Task<IActionResult> Edit(MatriculaViewModel matricula)
+        public async Task<IActionResult> Edit(int id, int AlunoId, int TurmaId)
         {
             using var client = new HttpClient();
             var token = GetAccessToken();
             if (!string.IsNullOrEmpty(token))
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            var response = await client.PutAsJsonAsync($"{_apiBaseUrl}/api/matriculas/{matricula.id}", matricula);
+            Matricula matricula = new Matricula();
+            matricula.AlunoId = AlunoId;
+            matricula.TurmaId = TurmaId;
+            matricula.DataMatricula = DateTime.Now;
+
+            var response = await client.PutAsJsonAsync($"{_apiBaseUrl}/api/matriculas/{id}", matricula);
             if (response.IsSuccessStatusCode)
                 return RedirectToAction("Index");
 
