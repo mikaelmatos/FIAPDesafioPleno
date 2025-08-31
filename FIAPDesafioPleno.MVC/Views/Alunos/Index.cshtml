@@ -1,0 +1,346 @@
+﻿@{
+    ViewData["Title"] = "Painel do Administrador";
+}
+
+<section class="max-w-7xl mx-auto py-10 px-6">
+
+    <div class="relative mb-8">
+        <div class="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-r from-blue-800 via-blue-600 to-indigo-600 opacity-90 blur-sm"></div>
+        <div class="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between shadow-xl animate-fade-in">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight">Alunos</h1>
+                <p class="text-white/80 mt-1">Gerencie os alunos cadastrados</p>
+            </div>
+            <button type="button"
+                    class="bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-lg font-medium shadow-sm transition-transform hover:scale-105"                   
+                    onclick="openFormModal()">
+                Cadastrar Aluno
+            </button>
+        </div>
+    </div>
+
+    <div class="mb-6 animate-slide-up">
+        <form method="get" action="/Alunos/Buscar" class="flex w-full">
+            <input type="text" name="nome" id="searchInput" placeholder="Buscar aluno por nome..."
+                   value="@(Context?.Request?.Query?["nome"].ToString() ?? "")"
+                   class="w-full px-4 py-3 border border-gray-200 rounded-l-xl focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm" />
+            <button type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-r-xl font-semibold shadow transition-transform hover:scale-[1.02]">
+                Buscar
+            </button>
+        </form>
+    </div>
+
+    <div class="overflow-x-auto bg-white rounded-2xl shadow-2xl border border-gray-100 animate-fade-in-slow">
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-gray-50">
+                <tr class="text-gray-600 text-sm">
+                    <th class="py-2 px-3 font-medium">Id</th>
+                    <th class="py-4 px-5 font-medium">Nome</th>
+                    <th class="py-4 px-5 font-medium">Email</th>
+                    <th class="py-3 px-4 font-medium">CPF</th>
+                    <th class="py-4 px-5 font-medium">Data Nascimento</th>
+                    <th class="py-4 px-5 font-medium text-center">Ações</th>
+                </tr>
+            </thead>
+
+            <tbody id="alunosTable" class="text-gray-700">
+
+                @if (ViewBag.Alunos != null){
+                    if (ViewBag.Alunos.Count > 0)
+                    {
+                        foreach (Aluno aluno in ViewBag.Alunos)
+                        {
+                            <tr class="border-t hover:bg-gray-50/70 transition">
+                                <td class="py-2 px-3">@aluno.id</td>
+                                <td class="py-4 px-5">@aluno.nome</td>
+                                <td class="py-4 px-5">@aluno.email</td>
+                                <td class="py-3 px-4">@aluno.cpf</td>
+                                <td class="py-4 px-5">@aluno.dataNascimento.ToString("dd/MM/yyyy")</td>
+                                <td class="py-4 px-5">
+                                    <div class="flex gap-2 justify-center">
+                                        <button type="button"
+                                                class="bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-lg font-medium shadow-sm transition-transform hover:scale-105"
+                                                data-id="@aluno.id" data-nome="@aluno.nome" data-matricula="@aluno.id" data-email="@aluno.email" data-cpf="@aluno.cpf" data-data-nascimento="@aluno.dataNascimento.ToString("yyyy-MM-dd")"
+                                                onclick="openEditModalFromBtn(this)">
+                                            Editar
+                                        </button>
+                                        <button type="button"
+                                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg font-medium shadow-sm transition-transform hover:scale-105"
+                                                data-id="@aluno.id"
+                                                onclick="openDeleteModalFromBtn(this)">
+                                            Excluir
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="border-t">
+                            <td colspan="7" class="py-10 px-5">
+                                <div class="flex flex-col items-center text-center text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
+                                    </svg>
+                                    <p class="font-medium">Nenhum aluno encontrado</p>
+                                    <p class="text-sm">Tente ajustar sua busca ou cadastre novos alunos.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div id="editModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-scale-in">
+        <div class="flex items-center justify-between mb-2">
+            <h2 class="text-xl font-bold">Editar Aluno</h2>
+            <button type="button" class="text-gray-500 hover:text-gray-700" onclick="closeEditModal()">✕</button>
+        </div>
+        <form method="post" action="/Alunos/Edit" class="space-y-4">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="Id" id="editId" />
+            <div>
+                <label class="block text-sm font-medium mb-1">Nome</label>
+                <input type="text" name="Nome" id="editNome"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <input type="hidden" name="Matricula" id="editMatricula"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" name="Email" id="editEmail"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">CPF</label>
+                <input type="text" name="CPF" id="editCPF"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Data Nascimento</label>
+                <input type="date" name="dataNascimento" id="dataNascimento"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div class="flex justify-end gap-3 pt-2">
+                <button type="button" onclick="closeEditModal()"
+                        class="px-4 py-2 border border-gray-300 rounded-xl hover:bg-gray-50">
+                    Cancelar
+                </button>
+                <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-semibold shadow">
+                    Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div id="formModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-scale-in">
+        <div class="flex items-center justify-between mb-2">
+            <h2 class="text-xl font-bold">Cadastrar Aluno</h2>
+            <button type="button" class="text-gray-500 hover:text-gray-700" onclick="closeFormModal()">✕</button>
+        </div>
+        <form method="post" action="/Alunos/Create" class="space-y-4">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="Id" id="editId" />
+            <div>
+                <label class="block text-sm font-medium mb-1">Nome</label>
+                <input type="text" name="Nome" id="editNome"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <input type="hidden" name="Matricula" id="editMatricula"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" name="Email" id="editEmail"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">CPF</label>
+                <input type="text" name="CPF" id="editCPF"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Data Nascimento</label>
+                <input type="date" name="dataNascimento" id="dataNascimento"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Senha</label>
+                <input type="password" name="password" id="password"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Confirmar Senha</label>
+                <input type="password" name="password-confirm" id="password-confirm"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div class="flex justify-end gap-3 pt-2">
+                <button type="button" onclick="closeFormModal()"
+                        class="px-4 py-2 border border-gray-300 rounded-xl hover:bg-gray-50">
+                    Cancelar
+                </button>
+                <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-semibold shadow">
+                    Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="deleteModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 text-center animate-scale-in">
+        <h2 class="text-xl font-bold mb-2">Tem certeza?</h2>
+        <p class="text-gray-600 mb-6">Deseja realmente excluir este aluno?</p>
+        <form method="post" action="/Alunos/Delete" class="flex flex-col items-center gap-4">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="Id" id="deleteId" />
+            <div class="flex justify-center gap-3">
+                <button type="button" onclick="closeDeleteModal()"
+                        class="px-4 py-2 border border-gray-300 rounded-xl hover:bg-gray-50">
+                    Cancelar
+                </button>
+                <button type="submit"
+                        class="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-xl font-semibold shadow">
+                    Excluir
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="adminModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-scale-in">
+        <div class="flex items-center justify-between mb-2">
+            <h2 class="text-xl font-bold">Meus Dados</h2>
+            <button type="button" class="text-gray-500 hover:text-gray-700" onclick="closeAdminModal()">✕</button>
+        </div>
+        <form method="post" action="/Account/Atualizar" class="space-y-4">
+            @Html.AntiForgeryToken()
+            <div>
+                <label class="block text-sm font-medium mb-1">Nome</label>
+                <input type="text" name="Nome" value="@(Model?.Admin?.Nome ?? "")"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" name="Email" value="@(Model?.Admin?.Email ?? "")"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Senha</label>
+                <input type="password" name="Senha" placeholder="Digite nova senha (opcional)"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+            </div>
+            <div class="flex justify-end gap-3 pt-2">
+                <button type="button" onclick="closeAdminModal()"
+                        class="px-4 py-2 border border-gray-300 rounded-xl hover:bg-gray-50">
+                    Cancelar
+                </button>
+                <button type="submit"
+                        class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-xl font-semibold shadow">
+                    Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    @@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+    @@keyframes fadeInSlow { from { opacity: 0 } to { opacity: 1 } }
+    @@keyframes slideUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
+    @@keyframes scaleIn { from { opacity: 0; transform: scale(.97) } to { opacity: 1; transform: scale(1) } }
+
+    .animate-fade-in        { animation: fadeIn .35s ease both; }
+    .animate-fade-in-slow   { animation: fadeInSlow .6s ease both; }
+    .animate-slide-up       { animation: slideUp .35s ease both; }
+    .animate-scale-in       { animation: scaleIn .25s ease both; }
+</style>
+
+<script>
+    const modalShow = (id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove('hidden');
+        el.classList.add('flex');
+    };
+    const modalHide = (id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.add('hidden');
+        el.classList.remove('flex');
+    };
+
+    function openEditModal(id, nome, matricula, email, cpf, dataNascimento) {
+        document.getElementById('editId').value = id || '';
+        document.getElementById('editNome').value = nome || '';
+        document.getElementById('editMatricula').value = matricula || '';
+
+        document.getElementById('editEmail').value = email || '';
+        document.getElementById('editCPF').value = cpf || '';
+        document.getElementById('dataNascimento').value = dataNascimento || '';            
+
+        modalShow('editModal');
+    }
+    function openEditModalFromBtn(btn) {
+        const { id, nome, matricula, email, cpf, dataNascimento } = btn.dataset;
+        openEditModal(id, nome, matricula, email, cpf, dataNascimento);
+    }
+    function closeEditModal() { modalHide('editModal'); }
+
+
+
+    function openFormModal() {
+        modalShow('formModal');
+    }
+
+    function closeFormModal() {
+        modalHide('formModal');
+    }
+
+
+
+
+    function openDeleteModal(id) {
+        document.getElementById('deleteId').value = id || '';
+        modalShow('deleteModal');
+    }
+    function openDeleteModalFromBtn(btn) {
+        openDeleteModal(btn.dataset.id);
+    }
+    function closeDeleteModal() { modalHide('deleteModal'); }
+
+    function openAdminModal() { modalShow('adminModal'); }
+    function closeAdminModal() { modalHide('adminModal'); }
+
+    ['editModal','deleteModal','adminModal'].forEach(mid => {
+        const m = document.getElementById(mid);
+        if (!m) return;
+        m.addEventListener('click', (e) => {
+            if (e.target === m) modalHide(mid);
+        });
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.target.form?.submit();
+            }
+        });
+    }
+</script>

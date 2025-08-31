@@ -72,7 +72,7 @@
       },
       {
         "Name": "dto",
-        "Type": "FIAPDesafioPleno.DTOs.AlunoCreateDto",
+        "Type": "FIAPDesafioPleno.DTOs.AlunoUpdateDto",
         "IsRequired": true
       }
     ],
@@ -269,6 +269,11 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "busca",
+        "Type": "System.String",
+        "IsRequired": false
+      },
       {
         "Name": "page",
         "Type": "System.Int32",

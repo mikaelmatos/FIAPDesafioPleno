@@ -38,22 +38,35 @@ namespace FIAPDesafioPleno.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        public async Task<IActionResult> List([FromQuery] string busca = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
-            var query = _ctx.Turmas.AsNoTracking()
-                        .OrderBy(t => t.Nome)
-                        .Select(t => new {
-                            t.Id,
-                            t.Nome,
-                            t.Descricao,
-                            AlunosCount = t.Matriculas.Count()
-                        });
+            if (pageSize <= 0) pageSize = 10;
+
+            var query = _ctx.Turmas.AsNoTracking();
+
+            if (!string.IsNullOrWhiteSpace(busca))
+            {
+                var t = busca.Trim();
+                query = query.Where(tu => tu.Nome.Contains(t));
+            }
+
+            query = query.OrderBy(t => t.Nome);
 
             var total = await query.CountAsync();
-            var items = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            var items = await query.Skip((page - 1) * pageSize).Take(pageSize)
+                .Select(t => new
+                {
+                    t.Id,
+                    t.Nome,
+                    t.Descricao,
+                    AlunosCount = t.Matriculas.Count()
+                })
+                .ToListAsync();
 
             return Ok(new { total, page, pageSize, items });
         }
+
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)

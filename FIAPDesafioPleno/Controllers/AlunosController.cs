@@ -66,6 +66,7 @@ namespace FIAPDesafioPleno.Controllers
         public async Task<IActionResult> List([FromQuery] string busca = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             if (pageSize <= 0) pageSize = 10;
+
             var query = _ctx.Alunos.AsNoTracking();
 
             if (!string.IsNullOrWhiteSpace(busca))
@@ -77,6 +78,7 @@ namespace FIAPDesafioPleno.Controllers
             query = query.OrderBy(a => a.Nome);
 
             var total = await query.CountAsync();
+
             var items = await query.Skip((page - 1) * pageSize).Take(pageSize)
                 .Select(a => new AlunoReadDto { Id = a.Id, Nome = a.Nome, DataNascimento = a.DataNascimento, CPF = a.CPF, Email = a.Email })
                 .ToListAsync();
@@ -86,7 +88,7 @@ namespace FIAPDesafioPleno.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, [FromBody] AlunoCreateDto dto)
+        public async Task<IActionResult> Update(int id, [FromBody] AlunoUpdateDto dto)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -101,7 +103,9 @@ namespace FIAPDesafioPleno.Controllers
             aluno.DataNascimento = dto.DataNascimento;
             aluno.CPF = cpf;
             aluno.Email = dto.Email;
-            aluno.IsAdmin = dto.IsAdmin;
+
+            if (dto.IsAdmin.HasValue)
+                aluno.IsAdmin = dto.IsAdmin.Value;
 
             if (!string.IsNullOrWhiteSpace(dto.Password))
             {
@@ -112,6 +116,7 @@ namespace FIAPDesafioPleno.Controllers
             await _ctx.SaveChangesAsync();
             return NoContent();
         }
+
 
         [Authorize(Roles = "Administrator")]
         [HttpDelete("{id:int}")]

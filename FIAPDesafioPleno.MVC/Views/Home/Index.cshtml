@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - FIAPTestePleno</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+          font-family: 'Poppins', sans-serif;
+          background: linear-gradient(to right, #1e3a8a, #2563eb, #4f46e5);
+          min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center">
+
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">FIAPTestePleno</h1>
+            <p class="text-gray-500 mt-2">Bem-vindo de volta! Faça login para continuar</p>
+        </div>
+
+        <form action="Login" method="POST" class="space-y-5">
+            @Html.AntiForgeryToken()
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
+                <input type="email"
+                       id="email"
+                       name="email"
+                       required
+                       class="mt-1 block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
+                <div class="relative mt-1">
+                    <input type="password"
+                           id="password"
+                           name="password"
+                           required
+                           class="block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10" />
+                    <button type="button"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                            onclick="togglePassword()">
+                        👁
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-sm">
+                <label class="flex items-center">
+                    <input type="checkbox" class="rounded text-blue-500 focus:ring-blue-300">
+                    <span class="ml-2 text-gray-700">Lembrar-me</span>
+                </label>
+                <a href="/recuperar-senha" class="text-blue-600 hover:underline font-semibold">Esqueceu a senha?</a>
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition">
+                Entrar
+            </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-600 mt-6">
+            Não tem conta?
+            <a href="/cadastro" class="text-blue-600 hover:underline font-semibold">Cadastre-se</a>
+        </p>
+    </div>
+
+    <script>
+        function togglePassword() {
+          const pass = document.getElementById('password');
+          pass.type = pass.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+</body>
+</html>
