@@ -35,4 +35,7 @@ Isso vai gerar/mapear as tabelas Alunos, Turmas, Matriculas no banco.
 
 Caso a API rode em uma porta diferente de :7131 (https://localhost:7131) configure o endereço no appsettings.json do MVC
 
+### ADMIN PADRÃO
 
+admin@fiap.com
+Admin@123
