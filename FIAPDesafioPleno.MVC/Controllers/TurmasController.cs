@@ -11,8 +11,11 @@ namespace FIAPDesafioPleno.MVC.Controllers
     [Authorize(Roles = "Administrator")]
     public partial class TurmasController : Controller
     {
-        private readonly string _apiBaseUrl = "https://localhost:7131";
-
+        private readonly IConfiguration _configuration;
+        public TurmasController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         private string? GetAccessToken()
         {
             return User.FindFirst("AccessToken")?.Value;
@@ -32,7 +35,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.GetAsync($"{_apiBaseUrl}/api/turmas");
+                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/turmas");
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -64,7 +67,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.GetAsync($"{_apiBaseUrl}/api/turmas?busca=" + nome);
+                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/turmas?busca=" + nome);
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -97,7 +100,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.PostAsJsonAsync($"{_apiBaseUrl}/api/turmas", turma);
+                var response = await client.PostAsJsonAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/turmas", turma);
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
@@ -124,7 +127,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.PutAsJsonAsync($"{_apiBaseUrl}/api/turmas/{turma.Id}", turma);
+                var response = await client.PutAsJsonAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/turmas/{turma.Id}", turma);
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
@@ -150,7 +153,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.DeleteAsync($"{_apiBaseUrl}/api/turmas/{id}");
+                var response = await client.DeleteAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/turmas/{id}");
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");

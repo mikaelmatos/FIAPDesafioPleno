@@ -149,7 +149,7 @@ namespace FIAPDesafioPleno.Controllers
 
         [Authorize]
         [HttpGet("GetUserInfo")]
-        //[ApiExplorerSettings(IgnoreApi = true)]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult GetUserInfo()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

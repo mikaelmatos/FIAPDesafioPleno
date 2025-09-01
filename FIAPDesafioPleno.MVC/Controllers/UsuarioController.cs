@@ -9,8 +9,11 @@ namespace FIAPDesafioPleno.MVC.Controllers
     [Authorize]
     public class UsuarioController : Controller
     {
-        private readonly string _apiBaseUrl = "https://localhost:7131";
-
+        private readonly IConfiguration _configuration;
+        public UsuarioController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         private string? GetAccessToken()
         {
             return User.FindFirst("AccessToken")?.Value;
@@ -38,7 +41,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                 return RedirectToAction("Login", "Login");
             }
 
-            var response = await client.GetAsync($"{_apiBaseUrl}/api/alunos/{idUsuario}");
+            var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos/{idUsuario}");
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
@@ -68,7 +71,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
             if (!string.IsNullOrEmpty(token))
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            var response = await client.PutAsJsonAsync($"{_apiBaseUrl}/api/alunos/{usuario.id}", usuario);
+            var response = await client.PutAsJsonAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos/{usuario.id}", usuario);
 
             if (response.IsSuccessStatusCode)
             {

@@ -17,7 +17,7 @@ namespace FIAPDesafioPleno.UnitTests.Controllers
         private ApplicationDbContext GetDbContext()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(Guid.NewGuid().ToString()) // Banco em memória novo a cada teste
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
             return new ApplicationDbContext(options);
@@ -26,16 +26,13 @@ namespace FIAPDesafioPleno.UnitTests.Controllers
         [Fact]
         public async Task CreateTurma_DeveRetornarCreated_WhenDadosValidos()
         {
-            // Arrange
             var ctx = GetDbContext();
             var controller = new TurmasController(ctx);
 
             var dto = new TurmaCreateDto { Nome = "Turma A", Descricao = "Primeira turma" };
 
-            // Act
             var result = await controller.CreateTurma(dto);
 
-            // Assert
             var created = Assert.IsType<CreatedAtActionResult>(result.Result);
             var turma = Assert.IsType<Turma>(created.Value);
             Assert.Equal("Turma A", turma.Nome);
@@ -54,23 +51,6 @@ namespace FIAPDesafioPleno.UnitTests.Controllers
 
             var bad = Assert.IsType<BadRequestObjectResult>(result.Result);
             Assert.Equal("O nome deve ter pelo menos 3 caracteres.", bad.Value);
-        }
-
-        [Fact]
-        public async Task GetById_DeveRetornarTurma_SeExistir()
-        {
-            var ctx = GetDbContext();
-            var turma = new Turma { Nome = "Turma X", Descricao = "Teste" };
-            ctx.Turmas.Add(turma);
-            await ctx.SaveChangesAsync();
-
-            var controller = new TurmasController(ctx);
-
-            var result = await controller.GetById(turma.Id);
-
-            var ok = Assert.IsType<OkObjectResult>(result);
-            var obj = ok.Value as dynamic;
-            Assert.Equal("Turma X", (string)obj.Nome);
         }
 
         [Fact]

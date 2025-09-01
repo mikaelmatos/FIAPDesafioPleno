@@ -11,7 +11,12 @@ namespace FIAPDesafioPleno.Controllers
 
     public partial class AdminController : Controller
     {
-        private readonly string _apiBaseUrl = "https://localhost:7131";
+        private readonly IConfiguration _configuration;
+        public AdminController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         private string? GetAccessToken()
         {
             return User.FindFirst("AccessToken")?.Value;
@@ -35,7 +40,7 @@ namespace FIAPDesafioPleno.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.GetAsync($"{_apiBaseUrl}/api/alunos");
+                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos");
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();

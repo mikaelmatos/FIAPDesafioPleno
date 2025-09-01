@@ -13,8 +13,11 @@ namespace FIAPDesafioPleno.MVC.Controllers
     [Authorize(Roles = "Administrator")]
     public class AlunosController : Controller
     {
-        private readonly string _apiBaseUrl = "https://localhost:7131";
-
+        private readonly IConfiguration _configuration;
+        public AlunosController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         private string? GetAccessToken()
         {
             return User.FindFirst("AccessToken")?.Value;
@@ -39,7 +42,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.GetAsync($"{_apiBaseUrl}/api/alunos");
+                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos");
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -72,7 +75,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.GetAsync($"{_apiBaseUrl}/api/alunos?busca=" + nome);
+                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos?busca=" + nome);
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -105,7 +108,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.PostAsJsonAsync($"{_apiBaseUrl}/api/alunos", aluno);
+                var response = await client.PostAsJsonAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos", aluno);
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
@@ -132,7 +135,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.PutAsJsonAsync($"{_apiBaseUrl}/api/alunos/{aluno.id}", aluno);
+                var response = await client.PutAsJsonAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos/{aluno.id}", aluno);
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
@@ -159,7 +162,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.DeleteAsync($"{_apiBaseUrl}/api/alunos/{id}");
+                var response = await client.DeleteAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos/{id}");
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");

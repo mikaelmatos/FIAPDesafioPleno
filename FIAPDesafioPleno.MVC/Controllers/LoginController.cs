@@ -15,8 +15,11 @@ namespace FIAPDesafioPleno.MVC.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly string _apiBaseUrl = "https://localhost:7131";
-
+        private readonly IConfiguration _configuration;
+        public LoginController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         public IActionResult Index(string ReturnUrl = null)
         {
             return RedirectToAction("Index", "Home");
@@ -33,7 +36,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(_apiBaseUrl);
+                    client.BaseAddress = new Uri(_configuration["ApiSettings:BaseUrl"]);
 
                     var content = new StringContent(
                         System.Text.Json.JsonSerializer.Serialize(model),
@@ -115,7 +118,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.GetAsync($"{_apiBaseUrl}/api/alunos/GetUserInfo");
+                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos/GetUserInfo");
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
