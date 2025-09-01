@@ -9,5 +9,6 @@ namespace FIAPDesafioPleno.MVC.Models
         public DateTime dataNascimento { get; set; }
         public string cpf { get; set; }
         public string email { get; set; }
+        public string password { get; set; }
     }
 }

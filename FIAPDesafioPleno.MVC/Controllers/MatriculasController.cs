@@ -4,27 +4,32 @@ using System.Text.Json;
 using FIAPDesafioPleno.MVC.Models;
 using static FIAPDesafioPleno.Controllers.AdminController;
 using static FIAPDesafioPleno.MVC.Controllers.TurmasController;
+using FIAPDesafioPleno.MVC.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FIAPDesafioPleno.MVC.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class MatriculasController : Controller
     {
-        private readonly string _apiBaseUrl = "https://localhost:7131"; // URL da sua API
+        private readonly string _apiBaseUrl = "https://localhost:7131";
 
         private string? GetAccessToken()
         {
             return User.FindFirst("AccessToken")?.Value;
         }
 
-        // Lista de matrículas
         public async Task<IActionResult> Index()
         {
+            ViewBag.Erro = TempData["Erro"];
+            ViewBag.Sucesso = TempData["Sucesso"];
+
+
             using var client = new HttpClient();
             var token = GetAccessToken();
             if (!string.IsNullOrEmpty(token))
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            // Busca Matrículas
             var response = await client.GetAsync($"{_apiBaseUrl}/api/matriculas");
             if (response.IsSuccessStatusCode)
             {
@@ -42,14 +47,12 @@ namespace FIAPDesafioPleno.MVC.Controllers
                 ViewBag.Matriculas = new List<MatriculaViewModel>();
             }
 
-            // Buscar alunos e turmas para os combobox
             ViewBag.Alunos = await GetAlunos();
             ViewBag.Turmas = await GetTurmas();
 
             return View();
         }
 
-        // Método auxiliar para buscar alunos
         private async Task<List<Aluno>> GetAlunos()
         {
             using var client = new HttpClient();
@@ -69,7 +72,6 @@ namespace FIAPDesafioPleno.MVC.Controllers
             return new List<Aluno>();
         }
 
-        // Método auxiliar para buscar turmas
         private async Task<List<TurmaViewModel>> GetTurmas()
         {
             using var client = new HttpClient();
@@ -89,7 +91,6 @@ namespace FIAPDesafioPleno.MVC.Controllers
             return new List<TurmaViewModel>();
         }
 
-        // Criar matrícula
         [HttpPost]
         public async Task<IActionResult> Create(int AlunoId, int TurmaId)
         {
@@ -107,11 +108,10 @@ namespace FIAPDesafioPleno.MVC.Controllers
             if (response.IsSuccessStatusCode)
                 return RedirectToAction("Index");
 
-            TempData["Erro"] = "Erro ao criar matrícula.";
+            TempData["Erro"] = "Erro ao criar matrícula.<br/>Selecione Aluno e Turma";
             return RedirectToAction("Index");
         }
 
-        // Editar matrícula
         [HttpPost]
         public async Task<IActionResult> Edit(int id, int AlunoId, int TurmaId)
         {
@@ -133,7 +133,6 @@ namespace FIAPDesafioPleno.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        // Excluir matrícula
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {

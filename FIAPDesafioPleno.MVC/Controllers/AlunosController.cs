@@ -4,22 +4,32 @@ using static FIAPDesafioPleno.Controllers.AdminController;
 using System.Net.Http.Headers;
 using FIAPDesafioPleno.MVC.Models;
 using System.Text.Json;
+using FIAPDesafioPleno.MVC.ViewModel;
+using FIAPDesafioPleno.MVC.Util;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FIAPDesafioPleno.MVC.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AlunosController : Controller
     {
-        private readonly string _apiBaseUrl = "https://localhost:7131"; // URL da sua API
+        private readonly string _apiBaseUrl = "https://localhost:7131";
 
-        // Método auxiliar para recuperar o token salvo no Cookie
         private string? GetAccessToken()
         {
             return User.FindFirst("AccessToken")?.Value;
         }
 
-        // Lista de alunos
+        private int? GetIdLogado()
+        {
+            return Convert.ToInt32(User.FindFirst("UserId")?.Value);
+        }
+
         public async Task<IActionResult> Index()
         {
+            ViewBag.Erro = TempData["Erro"];
+            ViewBag.Sucesso = TempData["Sucesso"];
+
             using (var client = new HttpClient())
             {
                 var token = GetAccessToken();
@@ -39,6 +49,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                     var alunos = paginacao.items;
 
                     ViewBag.Alunos = alunos;
+                    ViewBag.IdLogado = GetIdLogado();
 
                     return View();
                 }
@@ -76,13 +87,12 @@ namespace FIAPDesafioPleno.MVC.Controllers
                 }
                 else
                 {
-                    ViewBag.Erro = "Não foi possível carregar os alunos.";
+                    TempData["Erro"] = "Não foi possível carregar os alunos.";
                     return View("Index", new List<Aluno>());
                 }
             }
         }
 
-        // Criar novo aluno
         [HttpPost]
         public async Task<IActionResult> Create(AlunoViewModel aluno)
         {
@@ -102,13 +112,14 @@ namespace FIAPDesafioPleno.MVC.Controllers
                 }
                 else
                 {
-                    TempData["Erro"] = "Erro ao criar aluno.";
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    TempData["Erro"] = TrataErros.TrataMensagemErro(errorContent);
+
                     return RedirectToAction("Index");
                 }
             }
         }
 
-        // Editar aluno
         [HttpPost]
         public async Task<IActionResult> Edit(Aluno aluno)
         {
@@ -128,13 +139,14 @@ namespace FIAPDesafioPleno.MVC.Controllers
                 }
                 else
                 {
-                    TempData["Erro"] = "Erro ao editar aluno.";
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    TempData["Erro"] = TrataErros.TrataMensagemErro(errorContent);
+
                     return RedirectToAction("Index");
                 }
             }
         }
 
-        // Excluir aluno
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
@@ -158,6 +170,6 @@ namespace FIAPDesafioPleno.MVC.Controllers
                     return RedirectToAction("Index");
                 }
             }
-        }
+        }       
     }
 }

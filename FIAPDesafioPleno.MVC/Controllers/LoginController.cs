@@ -2,20 +2,24 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using FIAPDesafioPleno.MVC.Models;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using FIAPDesafioPleno.MVC.ViewModel;
+using FIAPDesafioPleno.MVC.Util;
+using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
+using static FIAPDesafioPleno.MVC.Controllers.LoginController;
 
 namespace FIAPDesafioPleno.MVC.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly string _apiBaseUrl = "https://localhost:7131"; // URL da sua API
+        private readonly string _apiBaseUrl = "https://localhost:7131";
 
-        public IActionResult Index()
+        public IActionResult Index(string ReturnUrl = null)
         {
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -23,7 +27,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
         public async Task<IActionResult> Index(LoginViewModel model)
         {
             if (!ModelState.IsValid)
-                return View(model);
+                return RedirectToAction("Index", "Home");
 
             try
             {
@@ -31,23 +35,20 @@ namespace FIAPDesafioPleno.MVC.Controllers
                 {
                     client.BaseAddress = new Uri(_apiBaseUrl);
 
-                    // Monta o JSON para o POST
                     var content = new StringContent(
-                        JsonSerializer.Serialize(model),
+                        System.Text.Json.JsonSerializer.Serialize(model),
                         Encoding.UTF8,
                         "application/json"
                     );
 
-                    // Chama o endpoint de login
                     var response = await client.PostAsync("/api/auth/login", content);
 
                     if (!response.IsSuccessStatusCode)
                     {
                         TempData["Erro"] = "E-mail ou senha inválidos.";
-                        return View(model);
+                        return RedirectToAction("Index", "Home");
                     }
 
-                    // Lê o token da resposta
                     var responseString = await response.Content.ReadAsStringAsync();
                     var jsonDoc = JsonDocument.Parse(responseString);
                     var token = jsonDoc.RootElement.GetProperty("token").GetString();
@@ -55,16 +56,19 @@ namespace FIAPDesafioPleno.MVC.Controllers
                     if (string.IsNullOrEmpty(token))
                     {
                         TempData["Erro"] = "Token não recebido.";
-                        return View(model);
+                        return RedirectToAction("Index", "Home");
                     }
 
-                    // Cria as claims do usuário
+                    Usuario usuario = await ObterInformacoesLogado(token);
+
                     var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, model.Email),
-                        new Claim(ClaimTypes.Email, model.Email),
-                        new Claim("AccessToken", token) // <--- JWT armazenado como claim
-                    };
+            {
+                new Claim(ClaimTypes.Name, model.Email),
+                new Claim(ClaimTypes.Email, model.Email),
+                new Claim("AccessToken", token),
+                new Claim("UserId", usuario.userId),
+                new Claim(ClaimTypes.Role, usuario.role)
+            };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var principal = new ClaimsPrincipal(identity);
@@ -72,26 +76,68 @@ namespace FIAPDesafioPleno.MVC.Controllers
                     var authProperties = new AuthenticationProperties
                     {
                         IsPersistent = true,
-                        ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8) // expira em 8h
+                        ExpiresUtc = DateTimeOffset.UtcNow.AddHours(8)
                     };
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties);
                 }
 
-                return RedirectToAction("Index", "Admin");
+                if (User.FindFirst(ClaimTypes.Role)?.Value == "Administrator")
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Usuario");
+                }
             }
             catch (Exception ex)
             {
                 TempData["Erro"] = $"Erro de login: {ex.Message}";
-                return View(model);
+                return RedirectToAction("Index", "Home");
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "Home");
         }
+
+        private async Task<Usuario> ObterInformacoesLogado(string token)
+        {
+            using (var client = new HttpClient())
+            {
+                if (!string.IsNullOrEmpty(token))
+                {
+                    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", token);
+                }
+
+                var response = await client.GetAsync($"{_apiBaseUrl}/api/alunos/GetUserInfo");
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+
+                    Usuario usuario = JsonConvert.DeserializeObject<Usuario>(json);
+
+                    return usuario;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public class Usuario
+        {
+            public string userId { get; set; }
+            public string role { get; set; }
+            public string email { get; set; }
+        }
+
+
     }
 }

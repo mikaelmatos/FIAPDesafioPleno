@@ -1,0 +1,118 @@
+﻿@using System.Security.Claims
+@{
+    ViewData["Title"] = "Painel do Usuário";
+}
+
+@if (ViewBag.Erro != null)
+{
+    <div class="mb-6 animate-fade-in">
+        <div class="flex items-center justify-between bg-red-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+            <span class="font-medium">@Html.Raw(ViewBag.Erro)</span>
+            <button type="button" onclick="this.parentElement.remove()" class="ml-4">✕</button>
+        </div>
+    </div>
+}
+
+@if (ViewBag.Sucesso != null)
+{
+    <div class="mb-6 animate-fade-in">
+        <div class="flex items-center justify-between bg-green-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+            <span class="font-medium">@Html.Raw(ViewBag.Sucesso)</span>
+            <button type="button" onclick="this.parentElement.remove()" class="ml-4">✕</button>
+        </div>
+    </div>
+}
+
+<section class="max-w-4xl mx-auto py-10 px-6">
+
+    <div class="relative mb-8">
+        <div class="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-r from-indigo-700 via-blue-600 to-blue-800 opacity-90 blur-sm"></div>
+        <div class="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between shadow-xl animate-fade-in">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight">Painel do Usuário</h1>
+                <p class="text-white/80 mt-1">Gerencie seus dados e veja sua turma</p>
+            </div>
+            <div class="flex gap-3 mt-4 md:mt-0">
+                <a href="/Login/Logout"
+                   class="bg-red-500 hover:bg-red-600 text-white px-5 py-2.5 rounded-xl font-semibold shadow transition-transform hover:scale-[1.03]">
+                    Sair
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-lg p-6 mb-8 animate-slide-up">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Meus Dados</h2>
+        <p><strong>Nome:</strong> @ViewBag.Aluno.nome</p>
+        <p><strong>Email:</strong> @ViewBag.Aluno.email</p>
+        <p><strong>Data de Nascimento:</strong> @ViewBag.Aluno.dataNascimento.ToString("dd/MM/yyyy")</p>
+        <p><strong>CPF:</strong> @ViewBag.Aluno.cpf</p>
+        <div class="mt-4">
+            <button onclick="openUserModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-semibold shadow">
+                Editar Dados
+            </button>
+        </div>
+    </div>
+
+</section>
+
+<div id="userModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-scale-in">
+        <div class="flex items-center justify-between mb-2">
+            <h2 class="text-xl font-bold">Atualizar Meus Dados</h2>
+            <button type="button" class="text-gray-500 hover:text-gray-700" onclick="closeUserModal()">✕</button>
+        </div>
+        <form method="post" action="/Usuario/Atualizar" class="space-y-4">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@ViewBag.Aluno.id" />
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Nome</label>
+                <input type="text" name="nome" value="@ViewBag.Aluno.nome"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" name="email" value="@ViewBag.Aluno.email"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Data de Nascimento</label>
+                <input type="date" name="dataNascimento" value="@ViewBag.Aluno.dataNascimento.ToString("yyyy-MM-dd")"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1">CPF</label>
+                <input type="text" name="cpf" value="@ViewBag.Aluno.cpf"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Senha</label>
+                <input type="password" name="senha" placeholder="Digite nova senha (opcional)"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+
+            <div class="flex justify-end gap-3 pt-2">
+                <button type="button" onclick="closeUserModal()" class="px-4 py-2 border border-gray-300 rounded-xl hover:bg-gray-50">Cancelar</button>
+                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-xl font-semibold shadow">
+                    Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openUserModal() {
+        document.getElementById('userModal').classList.remove('hidden');
+        document.getElementById('userModal').classList.add('flex');
+    }
+    function closeUserModal() {
+        document.getElementById('userModal').classList.add('hidden');
+        document.getElementById('userModal').classList.remove('flex');
+    }
+</script>

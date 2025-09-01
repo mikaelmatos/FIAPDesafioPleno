@@ -2,9 +2,37 @@
     ViewData["Title"] = "Painel de Matrículas";
 }
 
-<section class="max-w-7xl mx-auto py-10 px-6">
+@if (ViewBag.Erro != null)
+{
+        <div class="mb-6 animate-fade-in">
+            <div class="flex items-center justify-between bg-red-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+                <div class="flex items-center gap-3">
+                    <span class="font-medium">@Html.Raw(ViewBag.Erro)</span>
+                </div>
+                <button type="button" class="ml-4 text-white/80 hover:text-white"
+                        onclick="this.parentElement.parentElement.remove()">
+                    ✕
+                </button>
+            </div>
+        </div>
+}
 
-    <!-- Header -->
+@if (ViewBag.Sucesso != null)
+{
+        <div class="mb-6 animate-fade-in">
+            <div class="flex items-center justify-between bg-green-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+                <div class="flex items-center gap-3">
+                    <span class="font-medium">@Html.Raw(ViewBag.Sucesso)</span>
+                </div>
+                <button type="button" class="ml-4 text-white/80 hover:text-white"
+                        onclick="this.parentElement.parentElement.remove()">
+                    ✕
+                </button>
+            </div>
+        </div>
+}
+
+<section class="max-w-7xl mx-auto py-10 px-6">
     <div class="relative mb-8">
         <div class="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-r from-blue-800 via-blue-600 to-indigo-600 opacity-90 blur-sm"></div>
         <div class="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between shadow-xl animate-fade-in">
@@ -20,7 +48,6 @@
         </div>
     </div>
 
-    <!-- Table -->
     <div class="overflow-x-auto bg-white rounded-2xl shadow-2xl border border-gray-100 animate-fade-in-slow">
         <table class="w-full text-left border-collapse">
             <thead class="bg-gray-50">
@@ -73,7 +100,6 @@
     </div>
 </section>
 
-<!-- MODAL CREATE -->
 <div id="createModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-scale-in">
         <div class="flex items-center justify-between mb-2">
@@ -118,7 +144,6 @@
     </div>
 </div>
 
-<!-- MODAL EDIT -->
 <div id="editModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-scale-in">
         <div class="flex items-center justify-between mb-2">
@@ -160,7 +185,6 @@
     </div>
 </div>
 
-<!-- MODAL DELETE -->
 <div id="deleteModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 text-center animate-scale-in">
         <h2 class="text-xl font-bold mb-2">Tem certeza?</h2>
@@ -222,7 +246,6 @@
     function closeDeleteModal() { modalHide('deleteModal'); }
 </script>
 
-<!-- Select2 (para busca nos combos) -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>

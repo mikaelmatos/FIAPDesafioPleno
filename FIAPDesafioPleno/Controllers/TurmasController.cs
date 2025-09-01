@@ -37,6 +37,7 @@ namespace FIAPDesafioPleno.Controllers
             return CreatedAtAction(nameof(GetById), new { id = turma.Id }, turma);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> List([FromQuery] string busca = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
@@ -67,7 +68,7 @@ namespace FIAPDesafioPleno.Controllers
             return Ok(new { total, page, pageSize, items });
         }
 
-
+        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -100,7 +101,7 @@ namespace FIAPDesafioPleno.Controllers
             return NoContent();
         }
 
-
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -2,6 +2,7 @@
 using FIAPDesafioPleno.DTOs;
 using FIAPDesafioPleno.Models;
 using FIAPDesafioPleno.Services;
+using FIAPDesafioPleno.Util;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,11 @@ namespace FIAPDesafioPleno.Controllers
             if (await _ctx.Alunos.AnyAsync(a => a.CPF == cpf || a.Email == dto.Email))
                 return Conflict("Aluno com mesmo CPF ou e-mail já cadastrado.");
 
+            if (!Validador.ValidaCPF(cpf))
+            {
+                return Conflict("CPF Inválido");
+            }
+
             var aluno = new Aluno
             {
                 Nome = dto.Nome,
@@ -54,6 +60,7 @@ namespace FIAPDesafioPleno.Controllers
             return CreatedAtAction(nameof(GetById), new { id = aluno.Id }, read);
         }
 
+        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -62,6 +69,7 @@ namespace FIAPDesafioPleno.Controllers
             return Ok(new AlunoReadDto { Id = aluno.Id, Nome = aluno.Nome, DataNascimento = aluno.DataNascimento, CPF = aluno.CPF, Email = aluno.Email });
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> List([FromQuery] string busca = null, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
@@ -98,6 +106,11 @@ namespace FIAPDesafioPleno.Controllers
             var cpf = dto.CPF.Trim();
             if (await _ctx.Alunos.AnyAsync(a => a.Id != id && (a.CPF == cpf || a.Email == dto.Email)))
                 return Conflict("Outro aluno já utiliza esse CPF ou e-mail.");
+
+            if (!Validador.ValidaCPF(cpf))
+            {
+                return Conflict("CPF Inválido");
+            }
 
             aluno.Nome = dto.Nome;
             aluno.DataNascimento = dto.DataNascimento;

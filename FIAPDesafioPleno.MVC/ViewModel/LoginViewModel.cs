@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FIAPDesafioPleno.MVC.Models
+namespace FIAPDesafioPleno.MVC.ViewModel
 {
     public class LoginViewModel
     {

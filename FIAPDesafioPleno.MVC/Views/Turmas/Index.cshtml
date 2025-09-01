@@ -2,6 +2,37 @@
     ViewData["Title"] = "Painel de Turmas";
 }
 
+@if (ViewBag.Erro != null)
+{
+    <div class="mb-6 animate-fade-in">
+        <div class="flex items-center justify-between bg-red-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+            <div class="flex items-center gap-3">
+                <span class="font-medium">@Html.Raw(ViewBag.Erro)</span>
+            </div>
+            <button type="button" class="ml-4 text-white/80 hover:text-white"
+                    onclick="this.parentElement.parentElement.remove()">
+                ✕
+            </button>
+        </div>
+    </div>
+}
+
+@if (ViewBag.Sucesso != null)
+{
+    <div class="mb-6 animate-fade-in">
+        <div class="flex items-center justify-between bg-green-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+            <div class="flex items-center gap-3">
+                <span class="font-medium">@Html.Raw(ViewBag.Sucesso)</span>
+            </div>
+            <button type="button" class="ml-4 text-white/80 hover:text-white"
+                    onclick="this.parentElement.parentElement.remove()">
+                ✕
+            </button>
+        </div>
+    </div>
+}
+
+
 <section class="max-w-7xl mx-auto py-10 px-6">
 
     <div class="relative mb-8">
@@ -93,7 +124,6 @@
     </div>
 </section>
 
-<!-- MODAL EDIT -->
 <div id="editModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-scale-in">
         <div class="flex items-center justify-between mb-2">
@@ -128,7 +158,6 @@
 </div>
 
 
-<!-- MODAL CREATE -->
 <div id="createModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-scale-in">
         <div class="flex items-center justify-between mb-2">
@@ -162,7 +191,6 @@
     </div>
 </div>
 
-<!-- MODAL DELETE -->
 <div id="deleteModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 text-center animate-scale-in">
         <h2 class="text-xl font-bold mb-2">Tem certeza?</h2>

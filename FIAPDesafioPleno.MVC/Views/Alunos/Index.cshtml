@@ -1,6 +1,38 @@
-﻿@{
+﻿@using System.Security.Claims
+@{
     ViewData["Title"] = "Painel do Administrador";
 }
+
+@if (ViewBag.Erro != null)
+{
+    <div class="mb-6 animate-fade-in">
+        <div class="flex items-center justify-between bg-red-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+            <div class="flex items-center gap-3">
+                <span class="font-medium">@Html.Raw(ViewBag.Erro)</span>
+            </div>
+            <button type="button" class="ml-4 text-white/80 hover:text-white"
+                    onclick="this.parentElement.parentElement.remove()">
+                ✕
+            </button>
+        </div>
+    </div>
+}
+
+@if (ViewBag.Sucesso != null)
+{
+    <div class="mb-6 animate-fade-in">
+        <div class="flex items-center justify-between bg-green-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+            <div class="flex items-center gap-3">
+                <span class="font-medium">@Html.Raw(ViewBag.Sucesso)</span>
+            </div>
+            <button type="button" class="ml-4 text-white/80 hover:text-white"
+                    onclick="this.parentElement.parentElement.remove()">
+                ✕
+            </button>
+        </div>
+    </div>
+}
+
 
 <section class="max-w-7xl mx-auto py-10 px-6">
 
@@ -12,7 +44,7 @@
                 <p class="text-white/80 mt-1">Gerencie os alunos cadastrados</p>
             </div>
             <button type="button"
-                    class="bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-lg font-medium shadow-sm transition-transform hover:scale-105"                   
+                    class="bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-lg font-medium shadow-sm transition-transform hover:scale-105"
                     onclick="openFormModal()">
                 Cadastrar Aluno
             </button>
@@ -46,7 +78,8 @@
 
             <tbody id="alunosTable" class="text-gray-700">
 
-                @if (ViewBag.Alunos != null){
+                @if (ViewBag.Alunos != null)
+                {
                     if (ViewBag.Alunos.Count > 0)
                     {
                         foreach (Aluno aluno in ViewBag.Alunos)
@@ -65,12 +98,15 @@
                                                 onclick="openEditModalFromBtn(this)">
                                             Editar
                                         </button>
-                                        <button type="button"
-                                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg font-medium shadow-sm transition-transform hover:scale-105"
-                                                data-id="@aluno.id"
-                                                onclick="openDeleteModalFromBtn(this)">
-                                            Excluir
-                                        </button>
+                                        @if (ViewBag.IdLogado != aluno.id)
+                                        {
+                                            <button type="button"
+                                                    class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg font-medium shadow-sm transition-transform hover:scale-105"
+                                                    data-id="@aluno.id"
+                                                    onclick="openDeleteModalFromBtn(this)">
+                                                Excluir
+                                            </button>
+                                        }
                                     </div>
                                 </td>
                             </tr>
@@ -82,7 +118,7 @@
                             <td colspan="7" class="py-10 px-5">
                                 <div class="flex flex-col items-center text-center text-gray-500">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
                                     </svg>
                                     <p class="font-medium">Nenhum aluno encontrado</p>
                                     <p class="text-sm">Tente ajustar sua busca ou cadastre novos alunos.</p>
@@ -127,6 +163,11 @@
             <div>
                 <label class="block text-sm font-medium mb-1">Data Nascimento</label>
                 <input type="date" name="dataNascimento" id="dataNascimento"
+                       class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Nova Senha</label>
+                <input type="password" name="password" id="password"
                        class="w-full border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
             </div>
             <div class="flex justify-end gap-3 pt-2">
@@ -260,15 +301,65 @@
 </div>
 
 <style>
-    @@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-    @@keyframes fadeInSlow { from { opacity: 0 } to { opacity: 1 } }
-    @@keyframes slideUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
-    @@keyframes scaleIn { from { opacity: 0; transform: scale(.97) } to { opacity: 1; transform: scale(1) } }
+    @@keyframes fadeIn {
+        from {
+            opacity: 0
+        }
 
-    .animate-fade-in        { animation: fadeIn .35s ease both; }
-    .animate-fade-in-slow   { animation: fadeInSlow .6s ease both; }
-    .animate-slide-up       { animation: slideUp .35s ease both; }
-    .animate-scale-in       { animation: scaleIn .25s ease both; }
+        to {
+            opacity: 1
+        }
+    }
+
+    @@keyframes fadeInSlow {
+        from {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @@keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(8px)
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    }
+
+    @@keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(.97)
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1)
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn .35s ease both;
+    }
+
+    .animate-fade-in-slow {
+        animation: fadeInSlow .6s ease both;
+    }
+
+    .animate-slide-up {
+        animation: slideUp .35s ease both;
+    }
+
+    .animate-scale-in {
+        animation: scaleIn .25s ease both;
+    }
 </style>
 
 <script>
@@ -292,7 +383,7 @@
 
         document.getElementById('editEmail').value = email || '';
         document.getElementById('editCPF').value = cpf || '';
-        document.getElementById('dataNascimento').value = dataNascimento || '';            
+        document.getElementById('dataNascimento').value = dataNascimento || '';
 
         modalShow('editModal');
     }
@@ -327,7 +418,7 @@
     function openAdminModal() { modalShow('adminModal'); }
     function closeAdminModal() { modalHide('adminModal'); }
 
-    ['editModal','deleteModal','adminModal'].forEach(mid => {
+    ['editModal',   'deleteModal ' , 'adminModal'].forEach(mid => {
         const m = document.getElementById(mid);
         if (!m) return;
         m.addEventListener('click', (e) => {

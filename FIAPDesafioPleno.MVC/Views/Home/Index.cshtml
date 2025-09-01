@@ -28,6 +28,31 @@
             <p class="text-gray-500 mt-2">Bem-vindo de volta! Faça login para continuar</p>
         </div>
 
+
+
+        @if (ViewBag.Erro != null)
+        {
+            <div class="mb-6 animate-fade-in">
+                <div class="flex items-center justify-between bg-red-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+                    <span class="font-medium">@Html.Raw(ViewBag.Erro)</span>
+                    <button type="button" onclick="this.parentElement.remove()" class="ml-4">✕</button>
+                </div>
+            </div>
+        }
+
+        @if (ViewBag.Sucesso != null)
+        {
+            <div class="mb-6 animate-fade-in">
+                <div class="flex items-center justify-between bg-green-500/90 text-white px-5 py-4 rounded-xl shadow-lg">
+                    <span class="font-medium">@Html.Raw(ViewBag.Sucesso)</span>
+                    <button type="button" onclick="this.parentElement.remove()" class="ml-4">✕</button>
+                </div>
+            </div>
+        }
+
+
+
+
         <form action="Login" method="POST" class="space-y-5">
             @Html.AntiForgeryToken()
             <div>

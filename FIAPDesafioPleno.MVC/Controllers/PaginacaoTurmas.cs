@@ -1,4 +1,4 @@
-﻿using FIAPDesafioPleno.MVC.Models;
+﻿using FIAPDesafioPleno.MVC.ViewModel;
 
 namespace FIAPDesafioPleno.MVC.Controllers
 {

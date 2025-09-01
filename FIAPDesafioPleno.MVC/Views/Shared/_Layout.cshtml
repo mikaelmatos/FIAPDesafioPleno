@@ -1,4 +1,5 @@
 ﻿@using System
+@using System.Security.Claims
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,22 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - FIAPTestePleno</title>
 
-    <!-- Mantém seus CSS/JS existentes (não removi) -->
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/site.css" />
 
-    <!-- Tailwind + Alpine para layout e interatividade -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-    <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Poppins', sans-serif;
         }
-        /* cores e pequenas utilidades que usamos no layout */
         .nav-glass {
             background: rgba(255,255,255,0.06);
             backdrop-filter: blur(6px);
@@ -33,7 +30,6 @@
             color: #0f172a;
         }
 
-        /* Animações: em cshtml usar @@keyframes para evitar conflito Razor */
         @@keyframes fadeIn {
             from {
                 opacity: 0;
@@ -65,7 +61,6 @@
         }
     </style>
 
-    @* Helpers Razor para classe ativa no menu *@
     @functions {
         public string NavLinkClass(string controller)
         {
@@ -80,12 +75,10 @@
 </head>
 <body class="min-h-screen bg-gradient-to-r from-blue-800 via-blue-600 to-indigo-600">
 
-    <!-- HEADER / NAV -->
     <header x-data="{ open: false }"
             class="fixed inset-x-0 top-0 z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- BRAND -->
                 <div class="flex items-center gap-3 text-white">
                     <a href="/Admin" class="flex items-center gap-3 no-underline">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10">
@@ -98,28 +91,24 @@
                     </a>
                 </div>
 
-                <!-- DESKTOP NAV -->
-                <nav class="hidden md:flex items-center gap-8">
-                    <ul class="flex items-center gap-6">
-                        <li><a href="/Alunos" class="@NavLinkClass("Alunos")">Alunos</a></li>
-                        <li><a href="/Matriculas" class="@NavLinkClass("Matriculas")">Matrículas</a></li>
-                        <li><a href="/Turmas" class="@NavLinkClass("Turmas")">Turmas</a></li>
-                    </ul>
-                </nav>
+                @if (User.FindFirst(ClaimTypes.Role)?.Value == "Administrator")
+                {
 
-                <!-- RIGHT ACTIONS -->
+                    <nav class="hidden md:flex items-center gap-8">
+                        <ul class="flex items-center gap-6">
+                            <li><a href="/Alunos" class="@NavLinkClass("Alunos")">Alunos</a></li>
+                            <li><a href="/Matriculas" class="@NavLinkClass("Matriculas")">Matrículas</a></li>
+                            <li><a href="/Turmas" class="@NavLinkClass("Turmas")">Turmas</a></li>
+                        </ul>
+                    </nav>
+                }
+
                 <div class="hidden md:flex items-center gap-3">
-                    <button id="openMeusDadosBtn" type="button"
-                            class="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-xl font-semibold shadow anim-fade">
-                        Meus Dados
-                    </button>
-
                     <a href="/Login/Logout" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl font-semibold shadow anim-fade">
                         Sair
                     </a>
                 </div>
 
-                <!-- MOBILE TOGGLE -->
                 <div class="md:hidden flex items-center">
                     <button @@click="open = !open" aria-label="Abrir menu"
                             class="p-2 rounded-md text-white/90 hover:text-yellow-300 transition">
@@ -134,13 +123,14 @@
             </div>
         </div>
 
-        <!-- MOBILE MENU -->
         <div x-show="open" x-transition class="md:hidden border-t border-white/5">
             <div class="pt-3 pb-4 px-4 space-y-2">
-                <a href="/Alunos" class="block px-3 py-2 rounded-md @NavLinkClass("Alunos")">Alunos</a>
-                <a href="/Matriculas" class="block px-3 py-2 rounded-md @NavLinkClass("Matriculas")">Matrículas</a>
-                <a href="/Turmas" class="block px-3 py-2 rounded-md @NavLinkClass("Turmas")">Turmas</a>
-
+                @if (User.FindFirst(ClaimTypes.Role)?.Value == "Administrator")
+                {
+                    <a href="/Alunos" class="block px-3 py-2 rounded-md @NavLinkClass("Alunos")">Alunos</a>
+                    <a href="/Matriculas" class="block px-3 py-2 rounded-md @NavLinkClass("Matriculas")">Matrículas</a>
+                    <a href="/Turmas" class="block px-3 py-2 rounded-md @NavLinkClass("Turmas")">Turmas</a>
+                }
                 <div class="border-t border-white/5 mt-2 pt-3 flex flex-col gap-2">
                     <button id="openMeusDadosBtnMobile" type="button" class="w-full text-left px-3 py-2 rounded-md bg-yellow-400 text-black font-semibold">
                         Meus Dados
@@ -151,14 +141,12 @@
         </div>
     </header>
 
-    <!-- MAIN -->
     <main class="pt-20 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             @RenderBody()
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="py-6 text-center text-white/80 text-sm">
@@ -167,18 +155,15 @@
         </div>
     </footer>
 
-    <!-- Scripts (mantive seus scripts locais + pequena lógica JS) -->
     <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/site.js"></script>
 
     <script>
-        // Abre o modal "Meus Dados" se a função existir na página (Admin/Index tem openAdminModal).
         function tryOpenMeusDados() {
             if (typeof openAdminModal === 'function') {
                 openAdminModal();
             } else {
-                // se não houver modal, navega para uma página de perfil
                 window.location.href = '/Account/Perfil';
             }
         }
@@ -186,13 +171,10 @@
         document.getElementById('openMeusDadosBtn')?.addEventListener('click', tryOpenMeusDados);
         document.getElementById('openMeusDadosBtnMobile')?.addEventListener('click', tryOpenMeusDados);
 
-        // Fechar mobile menu ao redimensionar (melhora responsividade)
         window.addEventListener('resize', function () {
             const html = document.documentElement;
             if (window.innerWidth >= 768) {
-                // garante que mobile menu fechado quando muda para desktop
-                const alpine = html.__x; // quiet check, não crítico
-                // nada a fazer aqui especificamente; Alpine controla open internamente
+                const alpine = html.__x;
             }
         });
     </script>

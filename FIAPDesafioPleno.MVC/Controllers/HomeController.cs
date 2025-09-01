@@ -1,4 +1,5 @@
 using FIAPDesafioPleno.MVC.Models;
+using FIAPDesafioPleno.MVC.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -15,11 +16,9 @@ namespace FIAPDesafioPleno.MVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
+            ViewBag.Erro = TempData["Erro"];
+            ViewBag.Sucesso = TempData["Sucesso"];
 
-        public IActionResult Privacy()
-        {
             return View();
         }
 

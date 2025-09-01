@@ -3,22 +3,26 @@ using System.Net.Http.Headers;
 using FIAPDesafioPleno.MVC.Models;
 using System.Text.Json;
 using static FIAPDesafioPleno.Controllers.AdminController;
+using FIAPDesafioPleno.MVC.Util;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FIAPDesafioPleno.MVC.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public partial class TurmasController : Controller
     {
-        private readonly string _apiBaseUrl = "https://localhost:7131"; // URL da sua API
+        private readonly string _apiBaseUrl = "https://localhost:7131";
 
-        // Recupera token salvo no cookie (igual AlunosController)
         private string? GetAccessToken()
         {
             return User.FindFirst("AccessToken")?.Value;
         }
 
-        // Lista de turmas
         public async Task<IActionResult> Index()
         {
+            ViewBag.Erro = TempData["Erro"];
+            ViewBag.Sucesso = TempData["Sucesso"];
+
             using (var client = new HttpClient())
             {
                 var token = GetAccessToken();
@@ -49,7 +53,6 @@ namespace FIAPDesafioPleno.MVC.Controllers
             }
         }
 
-        // Buscar por nome
         public async Task<IActionResult> Buscar(string nome)
         {
             using (var client = new HttpClient())
@@ -82,7 +85,6 @@ namespace FIAPDesafioPleno.MVC.Controllers
             }
         }
 
-        // Criar nova turma
         [HttpPost]
         public async Task<IActionResult> Create(Turma turma)
         {
@@ -102,13 +104,14 @@ namespace FIAPDesafioPleno.MVC.Controllers
                 }
                 else
                 {
-                    TempData["Erro"] = "Erro ao criar turma.";
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    TempData["Erro"] = TrataErros.TrataMensagemErro(errorContent);
+                    
                     return RedirectToAction("Index");
                 }
             }
         }
 
-        // Editar turma
         [HttpPost]
         public async Task<IActionResult> Edit(Turma turma)
         {
@@ -128,13 +131,13 @@ namespace FIAPDesafioPleno.MVC.Controllers
                 }
                 else
                 {
-                    TempData["Erro"] = "Erro ao editar turma.";
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    TempData["Erro"] = TrataErros.TrataMensagemErro(errorContent);
                     return RedirectToAction("Index");
                 }
             }
         }
 
-        // Excluir turma
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
