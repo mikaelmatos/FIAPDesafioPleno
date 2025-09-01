@@ -2,8 +2,8 @@
 
 ### 1 - Adicione a connection string
 
-* Crie um novo banco de dados no seu SQLServer com nome "FIAPDesafioPlenoDb"
-* No aquivo appsettings.json (da API) preencha a connection string. 
+* Execute o dump.sql, isso ira criar o banco "FIAPDesafioPlenoDb" e cadastrar todos os dados
+* No arquivo appsettings.json (da API) preencha a connection string.  
 
     Exemplo:
 
@@ -13,10 +13,10 @@
 
 Abra o terminal no diretório do projeto e rode:
 
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-dotnet add package Swashbuckle.AspNetCore
+* dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+* dotnet add package Microsoft.EntityFrameworkCore.Design
+* dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+* dotnet add package Swashbuckle.AspNetCore
 
 
 ### 3 - Criar Migration inicial
@@ -29,19 +29,7 @@ dotnet add package Swashbuckle.AspNetCore
 * dotnet ef database update
 
 
-Isso vai gerar as tabelas Alunos, Turmas, Matriculas no banco.
-
-
-
-## CRIAÇÃO DO USUARIO ADMIN
-
-No Program.cs (API) procure o trecho:
-
-"Descomente ABAIXO para rodar apenas UMA VEZ na criação do usuario ADMIN"
-
-(apenas durante a instalação).
-
-Obs: Não fiz um INSERT por conta da senha em HASH
+Isso vai gerar/mapear as tabelas Alunos, Turmas, Matriculas no banco.
 
 
 ## CONFIGURAÇÃO DO MVC (EM CASO DE ERRO)

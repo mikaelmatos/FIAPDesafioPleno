@@ -19,6 +19,7 @@
     {
         public int turmaId { get; set; }
         public string nome { get; set; }
+        public int count { get; set; }
     }
 }
 

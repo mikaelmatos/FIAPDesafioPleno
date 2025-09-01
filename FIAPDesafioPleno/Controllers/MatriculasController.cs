@@ -49,7 +49,7 @@ namespace FIAPDesafioPleno.Controllers
                 {
                     m.Id,
                     Aluno = new { m.AlunoId, m.Aluno.Nome, m.Aluno.Email },
-                    Turma = new { m.TurmaId, m.Turma.Nome },
+                    Turma = new { m.TurmaId, m.Turma.Nome, m.Turma.Matriculas.Count },
                     m.DataMatricula
                 })
                 .ToListAsync();

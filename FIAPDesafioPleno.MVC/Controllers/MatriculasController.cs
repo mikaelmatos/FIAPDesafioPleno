@@ -6,6 +6,7 @@ using static FIAPDesafioPleno.Controllers.AdminController;
 using static FIAPDesafioPleno.MVC.Controllers.TurmasController;
 using FIAPDesafioPleno.MVC.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using FIAPDesafioPleno.MVC.Util;
 
 namespace FIAPDesafioPleno.MVC.Controllers
 {
@@ -111,7 +112,9 @@ namespace FIAPDesafioPleno.MVC.Controllers
             if (response.IsSuccessStatusCode)
                 return RedirectToAction("Index");
 
-            TempData["Erro"] = "Erro ao criar matrícula.<br/>Selecione Aluno e Turma";
+            string errorContent = await response.Content.ReadAsStringAsync();
+            TempData["Erro"] = TrataErros.TrataMensagemErro(errorContent);
+            
             return RedirectToAction("Index");
         }
 
@@ -132,7 +135,9 @@ namespace FIAPDesafioPleno.MVC.Controllers
             if (response.IsSuccessStatusCode)
                 return RedirectToAction("Index");
 
-            TempData["Erro"] = "Erro ao editar matrícula.";
+            string errorContent = await response.Content.ReadAsStringAsync();
+            TempData["Erro"] = TrataErros.TrataMensagemErro(errorContent);
+            
             return RedirectToAction("Index");
         }
 

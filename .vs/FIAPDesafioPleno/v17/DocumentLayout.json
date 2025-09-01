@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\controllers\\alunoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\controllers\\alunoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\views\\turmas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\views\\turmas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\controllers\\turmascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\controllers\\turmascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\views\\matriculas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\views\\matriculas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\viewmodel\\turmaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\viewmodel\\turmaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\controllers\\matriculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\controllers\\matriculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\controllers\\matriculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\controllers\\matriculascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,88 +47,93 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\appsettings.json",
-              "RelativeDocumentMoniker": "FIAPDesafioPleno\\appsettings.json",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\appsettings.json",
-              "RelativeToolTip": "FIAPDesafioPleno\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-01T16:10:55.432Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Program.cs",
               "RelativeDocumentMoniker": "FIAPDesafioPleno\\Program.cs",
               "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Program.cs",
               "RelativeToolTip": "FIAPDesafioPleno\\Program.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAHAAAABKAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:06:15.036Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "FIAPDesafioPleno.MVC\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCoAAABdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:04:45.194Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "FIAPDesafioPleno.MVC\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:02:39.37Z"
+              "WhenOpened": "2025-09-01T16:42:17.681Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AlunosController.cs",
-              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\AlunosController.cs",
-              "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Controllers\\AlunosController.cs",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\AlunosController.cs",
-              "RelativeToolTip": "FIAPDesafioPleno.MVC\\Controllers\\AlunosController.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAwwEYAAAAtAAAAAAAAAA==",
+              "Title": "TurmaViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\ViewModel\\TurmaViewModel.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\ViewModel\\TurmaViewModel.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\ViewModel\\TurmaViewModel.cs",
+              "RelativeToolTip": "FIAPDesafioPleno.MVC\\ViewModel\\TurmaViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:02:26.153Z"
+              "WhenOpened": "2025-09-01T16:25:55.716Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\appsettings.json",
-              "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\appsettings.json",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\appsettings.json",
-              "RelativeToolTip": "FIAPDesafioPleno.MVC\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-01T15:55:41.177Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Views\\Turmas\\Index.cshtml",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Views\\Turmas\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Views\\Turmas\\Index.cshtml",
+              "RelativeToolTip": "FIAPDesafioPleno.MVC\\Views\\Turmas\\Index.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAEcAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-01T16:31:06.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Program.cs",
-              "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Program.cs",
-              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Program.cs",
-              "RelativeToolTip": "FIAPDesafioPleno.MVC\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "TurmasController.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\TurmasController.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno\\Controllers\\TurmasController.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\TurmasController.cs",
+              "RelativeToolTip": "FIAPDesafioPleno\\Controllers\\TurmasController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T15:55:30.993Z"
+              "WhenOpened": "2025-09-01T16:30:25.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml",
+              "RelativeToolTip": "FIAPDesafioPleno.MVC\\Views\\Matriculas\\Index.cshtml",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-01T16:28:49.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MatriculasController.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\MatriculasController.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno\\Controllers\\MatriculasController.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Controllers\\MatriculasController.cs",
+              "RelativeToolTip": "FIAPDesafioPleno\\Controllers\\MatriculasController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowC8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T16:27:34.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MatriculasController.cs",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\MatriculasController.cs",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Controllers\\MatriculasController.cs",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\MatriculasController.cs",
+              "RelativeToolTip": "FIAPDesafioPleno.MVC\\Controllers\\MatriculasController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwCgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T16:20:17.92Z",
+              "EditorCaption": ""
             }
           ]
         }

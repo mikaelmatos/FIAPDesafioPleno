@@ -89,27 +89,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-////Descomente ABAIXO para rodar apenas UMA VEZ na criação do usuario ADMIN
-//using (var scope = app.Services.CreateScope())
-//{
-//    var ctx = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-//    var auth = scope.ServiceProvider.GetRequiredService<IAuthService>();
-//
-//    if (!ctx.Alunos.Any(a => a.Email == "admin@fiap.com"))
-//    {
-//        var admin = new FIAPDesafioPleno.Models.Aluno
-//        {
-//            Nome = "Administrador",
-//            DataNascimento = new DateTime(1990, 1, 1),
-//            CPF = "12345678901",
-//            Email = "admin@fiap.com",
-//            PasswordHash = auth.HashPassword("Admin@123"),
-//            IsAdmin = true
-//        };
-//        ctx.Alunos.Add(admin);
-//        ctx.SaveChanges();
-//    }
-//}
-////Descomente ACIMA para rodar apenas UMA VEZ na criação do usuario ADMIN
-
 app.Run();
