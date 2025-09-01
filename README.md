@@ -28,7 +28,6 @@ Abra o terminal no diretório do projeto e rode:
 
 * dotnet ef database update
 
-
 Isso vai gerar/mapear as tabelas Alunos, Turmas, Matriculas no banco.
 
 
