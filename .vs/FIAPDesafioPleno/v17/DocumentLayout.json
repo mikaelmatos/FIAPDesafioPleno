@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6081EDAE-E0EB-409E-BAAB-9A2164B2D95F}|FIAPDesafioPleno\\FIAPDesafioPleno.csproj|solutionrelative:fiapdesafiopleno\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|c:\\users\\mikael\\source\\repos\\fiapdesafiopleno\\fiapdesafiopleno.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{25B7A711-312F-49E8-974B-B727C78D82C6}|FIAPDesafioPleno.MVC\\FIAPDesafioPleno.MVC.csproj|solutionrelative:fiapdesafiopleno.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +46,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\appsettings.json",
+              "RelativeDocumentMoniker": "FIAPDesafioPleno\\appsettings.json",
+              "ToolTip": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\appsettings.json",
+              "RelativeToolTip": "FIAPDesafioPleno\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-01T16:10:55.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno\\Program.cs",
               "RelativeDocumentMoniker": "FIAPDesafioPleno\\Program.cs",
@@ -50,12 +67,11 @@
               "RelativeToolTip": "FIAPDesafioPleno\\Program.cs",
               "ViewState": "AgIAAFEAAAAAAAAAAAAAAHAAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:06:15.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-01T16:06:15.036Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Controllers\\AdminController.cs",
@@ -63,12 +79,11 @@
               "RelativeToolTip": "FIAPDesafioPleno.MVC\\Controllers\\AdminController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAQwCoAAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:04:45.194Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-01T16:04:45.194Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Controllers\\HomeController.cs",
@@ -76,12 +91,11 @@
               "RelativeToolTip": "FIAPDesafioPleno.MVC\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:02:39.37Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-01T16:02:39.37Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AlunosController.cs",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Controllers\\AlunosController.cs",
               "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Controllers\\AlunosController.cs",
@@ -89,12 +103,11 @@
               "RelativeToolTip": "FIAPDesafioPleno.MVC\\Controllers\\AlunosController.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAwwEYAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:02:26.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-01T16:02:26.153Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\appsettings.json",
               "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\appsettings.json",
@@ -107,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Mikael\\source\\repos\\FIAPDesafioPleno\\FIAPDesafioPleno.MVC\\Program.cs",
               "RelativeDocumentMoniker": "FIAPDesafioPleno.MVC\\Program.cs",
@@ -115,8 +128,7 @@
               "RelativeToolTip": "FIAPDesafioPleno.MVC\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T15:55:30.993Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-01T15:55:30.993Z"
             }
           ]
         }

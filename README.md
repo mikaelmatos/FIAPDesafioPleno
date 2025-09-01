@@ -2,9 +2,8 @@
 
 ### 1 - Adicione a connection string
 
-    Crie um novo banco de dados no seu SQLServer com nome "FIAPDesafioPlenoDb"
-
-    No aquivo appsettings.json (da API) preencha a connection string. 
+* Crie um novo banco de dados no seu SQLServer com nome "FIAPDesafioPlenoDb"
+* No aquivo appsettings.json (da API) preencha a connection string. 
 
     Exemplo:
 
@@ -14,10 +13,10 @@
 
 Abra o terminal no diretório do projeto e rode:
 
-* dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-* dotnet add package Microsoft.EntityFrameworkCore.Design
-* dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-* dotnet add package Swashbuckle.AspNetCore
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+dotnet add package Swashbuckle.AspNetCore
 
 
 ### 3 - Criar Migration inicial
