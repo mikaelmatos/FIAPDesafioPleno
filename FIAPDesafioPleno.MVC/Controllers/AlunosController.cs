@@ -28,7 +28,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
             return Convert.ToInt32(User.FindFirst("UserId")?.Value);
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pagina = 1)
         {
             ViewBag.Erro = TempData["Erro"];
             ViewBag.Sucesso = TempData["Sucesso"];
@@ -42,7 +42,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos");
+                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos?page={pagina}&pageSize=10");
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -54,6 +54,12 @@ namespace FIAPDesafioPleno.MVC.Controllers
                     ViewBag.Alunos = alunos;
                     ViewBag.IdLogado = GetIdLogado();
 
+                    int totalPaginas = (int)Math.Ceiling((double)paginacao.total / 10);
+
+                    ViewBag.PaginaAtual = paginacao.page;
+                    ViewBag.TotalPaginas = totalPaginas;
+                    ViewBag.TotalItens = paginacao.total;
+
                     return View();
                 }
                 else
@@ -64,7 +70,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
             }
         }
 
-        public async Task<IActionResult> Buscar(string nome)
+        public async Task<IActionResult> Buscar(string nome, int pagina = 1)
         {
             using (var client = new HttpClient())
             {
@@ -75,7 +81,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
                         new AuthenticationHeaderValue("Bearer", token);
                 }
 
-                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos?busca=" + nome);
+                var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos?busca=" + nome + "&page=" + pagina + "&pageSize=10");
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -85,6 +91,13 @@ namespace FIAPDesafioPleno.MVC.Controllers
                     var alunos = paginacao.items;
 
                     ViewBag.Alunos = alunos;
+                    ViewBag.IdLogado = GetIdLogado();
+
+                    int totalPaginas = (int)Math.Ceiling((double)paginacao.total / 10);
+
+                    ViewBag.PaginaAtual = paginacao.page;
+                    ViewBag.TotalPaginas = totalPaginas;
+                    ViewBag.TotalItens = paginacao.total;
 
                     return View("Index");
                 }
@@ -173,6 +186,6 @@ namespace FIAPDesafioPleno.MVC.Controllers
                     return RedirectToAction("Index");
                 }
             }
-        }       
+        }
     }
 }

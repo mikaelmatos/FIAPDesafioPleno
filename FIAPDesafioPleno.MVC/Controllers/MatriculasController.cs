@@ -64,7 +64,7 @@ namespace FIAPDesafioPleno.MVC.Controllers
             if (!string.IsNullOrEmpty(token))
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos");
+            var response = await client.GetAsync($"{_configuration["ApiSettings:BaseUrl"]}/api/alunos?pageSize=10000");
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();

@@ -130,6 +130,32 @@
             </tbody>
         </table>
     </div>
+    <br />
+
+    <div class="text-white">
+        Página @ViewBag.PaginaAtual de @ViewBag.TotalPaginas
+        <br />
+        Total de registros: @ViewBag.TotalItens
+    </div>
+
+    <br />
+
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= (int)ViewBag.TotalPaginas; i++)
+            {
+                <li class="page-item @(i == ViewBag.PaginaAtual ? "active" : "")">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-pagina="@i"
+                       asp-route-tamanhoPagina="@ViewBag.TamanhoPagina">
+                        @i
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+
 </section>
 
 <div id="editModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4">
@@ -418,7 +444,7 @@
     function openAdminModal() { modalShow('adminModal'); }
     function closeAdminModal() { modalHide('adminModal'); }
 
-    ['editModal',   'deleteModal ' , 'adminModal'].forEach(mid => {
+    ['editModal', 'deleteModal ', 'adminModal'].forEach(mid => {
         const m = document.getElementById(mid);
         if (!m) return;
         m.addEventListener('click', (e) => {
